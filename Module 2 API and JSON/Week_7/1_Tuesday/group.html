@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<title>New York Times Search</title>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<style>
+	body {background-color: white;}
+	h1 {color: white; margin: auto;}
+	.container .navbar { width: 100%;}
+	.jumbotron {background-color: white;}
+	.navbar {background-color: steelblue;}
+	.navbar h5{color: white;}
+	.container {
+	border: 2px solid #00008B;}
+	button { margin-bottom: 10px;}
+</style>
+</head>
+
+<!-- As a heading -->
+<nav class="navbar">
+  <h1><img src="http://1000logos.net/wp-content/uploads/2017/04/Symbol-New-York-Times.png" style="width:50px;height:50px;" alt="NY Times logo">
+	New York Times Search</h1>
+</nav>
+
+<body>
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+  	<nav class="navbar">
+  		<h5>Search Parameters</h5>
+	</nav>
+    <form>
+  <div class="form-group">
+    <label for="searchTerm">Search Term:</label>
+    <input type="text" class="form-control" id="search" placeholder="Search Term">
+    <label>Number of Records to Retrieve:</label>
+    <input type="Records" class="form-control" id="NumberofRecords" placeholder="# of Records">
+    <label for="Start Year">Start Year (Optional):</label>
+    <input type="StartYear" class="form-control" id="StartYear" placeholder="Start Year">
+    <label for="End Year">End Year (Optional):</label>
+    <input type="EndYear" class="form-control" id="EndYear" placeholder="End Year">
+  </div>
+  <button type="submit" class="btn btn-primary">Search</button>
+  <button type="clearBtn" class="btn btn-primary">Clear</button>
+</form>       
+  </div>
+</div>
+  
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+  	<nav class="navbar">
+  		<h5>Top Articles</h5>
+	</nav>
+    
+  </div>
+</div>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript">
+
+    var keyword = $(this).attr("q");
+    var beginDate = $(this).attr("data-start");
+    var endDate = $(this).attr("data-end");
+    
+    var queryUrl = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=taxes" + "&api-key=13304c29b3c7408aaa4a0b1717dcbc2b";
+
+$.ajax({
+  url: queryUrl,
+  method: 'GET',
+})
+.then(function(data) {
+ console.log(data.response);
+ console.log(data.response.docs);
+})
+          
+</script>
+
+</body>
+
+</html>

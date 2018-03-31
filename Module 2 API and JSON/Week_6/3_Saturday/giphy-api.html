@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Giphy API</title>
+</head>
+
+<body>
+	<div id="animals"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    // Example queryURL for Giphy API
+    var queryURL = "https://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC";
+
+    $.ajax({
+      url: queryURL,
+      method: 'GET'
+    }).then(function(result) {
+    	var results = result.data;
+      	for (var i = 0; i < results.length; i++) {
+        var animalDiv = $("<div class=\"animal-item\">");
+
+        var rating = results[i].rating;
+
+        var p = $("<p>").text("Rating: " + rating);
+
+        var animated = results[i].images.fixed_height.url;
+        var still = results[i].images.fixed_height_still.url;
+
+        var animalImage = $("<img>");
+        animalImage.attr("src", still);
+        animalImage.attr("data-still", still);
+        animalImage.attr("data-animate", animated);
+        animalImage.attr("data-state", "still");
+        animalImage.addClass("animal-image");
+
+        animalDiv.append(p);
+        animalDiv.append(animalImage);
+
+        $("#animals").append(animalDiv);
+    }
+    });
+  </script>
+
+</body>
+
+</html>
