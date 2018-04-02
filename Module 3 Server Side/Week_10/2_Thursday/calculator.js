@@ -5,7 +5,7 @@ var b = input[4];
 
 var methods = {
     add: function(c, d) {
-        return Number (c) + Number (d);
+        return Number(c) + Number(d);
 
     },
 
