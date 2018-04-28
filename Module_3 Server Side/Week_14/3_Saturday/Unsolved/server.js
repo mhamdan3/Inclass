@@ -34,6 +34,8 @@ var animals = [
   }
 ];
 
+app.engine('handlebars', expresshbs())
+
 app.get("/dog", function(req, res) {
   // Handlebars requires an object to be sent to the dog.handlebars file. Lucky for us, animals[0] is an object!
 
